@@ -1,7 +1,7 @@
 const questions = [
-  // Q1 (unchanged except adding LaTeX)
+  // Q1
   {
-    equation: "\\(x^2 + 5x = -6\\)",
+    equation: "x^2 + 5x = -6",
     step1options: [
       {option:"\\(x^2 + 5x + 6 = 0\\)", correct:true},
       {option:"\\(x^2 + 5x - 6 = 0\\)", correct:false},
@@ -25,10 +25,9 @@ const questions = [
     ]
   },
 
-  // Q2: modified version, fully factorable, with LaTeX
-  // p=4,q=2 => (x+4)(x+2)=0 => x^2+6x+8=0 and eq: x^2+6x=-8
+  // Q2 revised
   {
-    equation: "\\(x^2 + 6x = -8\\)",
+    equation: "x^2 + 6x = -8",
     step1options: [
       {option:"\\(x^2 + 6x + 8 = 0\\)", correct:true},
       {option:"\\(x^2 + 6x - 8 = 0\\)", correct:false},
@@ -52,9 +51,9 @@ const questions = [
     ]
   },
 
-  // Q3: ensure no reversed correct pair and all LaTeX
+  // Q3 revised
   {
-    equation: "\\(x^2 - 7x = -10\\)",
+    equation: "x^2 - 7x = -10",
     step1options: [
       {option:"\\(x^2 - 7x + 10 = 0\\)", correct:true},
       {option:"\\(x^2 - 7x - 10 = 0\\)", correct:false},
@@ -67,7 +66,7 @@ const questions = [
       {option:"\\((x + 5)(x + 2) = 0\\)", correct:false},
       {option:"\\((x - 10)(x + 1) = 0\\)", correct:false},
       {option:"\\((x - 1)(x - 10) = 0\\)", correct:false},
-      {option:"\\((x - 6)(x - 1) = 0\\)", correct:false} // replaced reversed correct with distinct
+      {option:"\\((x - 6)(x - 1) = 0\\)", correct:false}
     ],
     step3options: [
       {option:"\\(x = 5, x = 2\\)", correct:true},
@@ -78,9 +77,9 @@ const questions = [
     ]
   },
 
-  // Q4 (unchanged except add LaTeX)
+  // Q4 (unchanged except equation no delimiters)
   {
-    equation:"\\(x^2 - 2x = 3\\)",
+    equation:"x^2 - 2x = 3",
     step1options:[
       {option:"\\(x^2 - 2x - 3 = 0\\)", correct:true},
       {option:"\\(x^2 - 2x + 3 = 0\\)", correct:false},
@@ -104,9 +103,9 @@ const questions = [
     ]
   },
 
-  // Q5: ensure distinct incorrect options
+  // Q5 revised
   {
-    equation:"\\(x^2 + 3x = 10\\)",
+    equation:"x^2 + 3x = 10",
     step1options:[
       {option:"\\(x^2 + 3x - 10 = 0\\)", correct:true},
       {option:"\\(x^2 + 3x + 10 = 0\\)", correct:false},
@@ -130,22 +129,22 @@ const questions = [
     ]
   },
 
-  // Q6 (unchanged except LaTeX)
+  // Q6 (unchanged except equation no delimiters)
   {
-    equation:"\\(x^2 - 8x = -16\\)",
+    equation:"x^2 - 8x = -16",
     step1options:[
       {option:"\\(x^2 - 8x + 16 = 0\\)", correct:true},
-      {option:"\\(x^2 - 8x - 16 = 0\\)", correct:false},
-      {option:"\\(x^2 - 8x = 16\\)", correct:false},
-      {option:"\\(x^2 + 8x + 16 = 0\\)", correct:false},
-      {option:"\\(x^2 - 4x + 4 = 0\\)", correct:false}
+      {option:"\\(x^2 -8x -16=0\\)", correct:false},
+      {option:"\\(x^2 -8x=16\\)", correct:false},
+      {option:"\\(x^2 +8x +16=0\\)", correct:false},
+      {option:"\\(x^2 -4x +4=0\\)", correct:false}
     ],
     step2options:[
       {option:"\\((x - 4)(x - 4) = 0\\)", correct:true},
-      {option:"\\((x + 4)(x + 4) = 0\\)", correct:false},
-      {option:"\\((x - 2)(x - 8) = 0\\)", correct:false},
-      {option:"\\((x - 1)(x - 16) = 0\\)", correct:false},
-      {option:"\\((x + 1)(x - 4) = 0\\)", correct:false}
+      {option:"\\((x +4)(x +4)=0\\)", correct:false},
+      {option:"\\((x -2)(x -8)=0\\)", correct:false},
+      {option:"\\((x -1)(x -16)=0\\)", correct:false},
+      {option:"\\((x +1)(x -4)=0\\)", correct:false}
     ],
     step3options:[
       {option:"\\(x = 4\\)", correct:true},
@@ -156,15 +155,15 @@ const questions = [
     ]
   },
 
-  // Q7 (unchanged except LaTeX)
+  // Q7 (unchanged except equation no delimiters)
   {
-    equation:"\\(x^2 + 10x = -9\\)",
+    equation:"x^2 + 10x = -9",
     step1options:[
       {option:"\\(x^2 + 10x + 9 = 0\\)", correct:true},
-      {option:"\\(x^2 + 10x - 9 = 0\\)", correct:false},
-      {option:"\\(x^2 + 10x = 9\\)", correct:false},
-      {option:"\\(x^2 -10x +9 = 0\\)", correct:false},
-      {option:"\\(x^2 + 9x +10 = 0\\)", correct:false}
+      {option:"\\(x^2 +10x -9=0\\)", correct:false},
+      {option:"\\(x^2 +10x=9\\)", correct:false},
+      {option:"\\(x^2 -10x +9=0\\)", correct:false},
+      {option:"\\(x^2 +9x +10=0\\)", correct:false}
     ],
     step2options:[
       {option:"\\((x + 9)(x + 1) = 0\\)", correct:true},
@@ -182,9 +181,9 @@ const questions = [
     ]
   },
 
-  // Q8: Modified step 2 options to ensure uniqueness and no equivalent pairs
+  // Q8 revised again no delimiters in equation
   {
-    equation:"\\(x^2 - 5x = -6\\)",
+    equation:"x^2 - 5x = -6",
     step1options:[
       {option:"\\(x^2 - 5x + 6 = 0\\)", correct:true},
       {option:"\\(x^2 - 5x - 6 = 0\\)", correct:false},
@@ -208,9 +207,9 @@ const questions = [
     ]
   },
 
-  // Q9 (unchanged except LaTeX)
+  // Q9 (unchanged except equation no delimiters)
   {
-    equation:"\\(x^2 + 5x = 6\\)",
+    equation:"x^2 + 5x = 6",
     step1options:[
       {option:"\\(x^2 + 5x - 6 = 0\\)", correct:true},
       {option:"\\(x^2 +5x +6=0\\)", correct:false},
@@ -234,9 +233,9 @@ const questions = [
     ]
   },
 
-  // Q10 (unchanged except LaTeX)
+  // Q10 (unchanged except equation no delimiters)
   {
-    equation:"\\(x^2 - 5x = 14\\)",
+    equation:"x^2 - 5x = 14",
     step1options:[
       {option:"\\(x^2 - 5x - 14 = 0\\)", correct:true},
       {option:"\\(x^2 -5x +14=0\\)", correct:false},
