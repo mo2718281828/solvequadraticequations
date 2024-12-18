@@ -1,5 +1,5 @@
 const questions = [
-  // Q1: p=2,q=3 => x^2+5x+6=0
+  // Q1: (Unchanged)
   {
     equation: "x^2 + 5x = -6",
     step1options: [
@@ -25,33 +25,36 @@ const questions = [
     ]
   },
 
-  // Q2: p=-1,q=4 => x^2+3x+(-4)=0
+  // Q2: Modified to be factorable and correct answer properly marked
+  // New chosen p,q = 4,2 => (x+4)(x+2)=x^2+6x+8=0
+  // equation: x^2+6x=-8 => step1: x^2+6x+8=0
+  // Factor: (x+4)(x+2)=0
   {
-    equation: "x^2 + 3x = -4",
+    equation: "x^2 + 6x = -8",
     step1options: [
-      {option:"x^2 + 3x + 4 = 0", correct:true},
-      {option:"x^2 + 3x - 4 = 0", correct:false},
-      {option:"x^2 + 3x = 4", correct:false},
-      {option:"x^2 - 3x + 4 = 0", correct:false},
-      {option:"x^2 + 4x + 3 = 0", correct:false}
+      {option:"x^2 + 6x + 8 = 0", correct:true},
+      {option:"x^2 + 6x - 8 = 0", correct:false},
+      {option:"x^2 + 6x = 8", correct:false},
+      {option:"x^2 - 6x + 8 = 0", correct:false},
+      {option:"x^2 + 8x + 6 = 0", correct:false}
     ],
     step2options: [
-      {option:"(x - 1)(x + 4) = 0", correct:true},
-      {option:"(x + 1)(x - 4) = 0", correct:false},
-      {option:"(x + 2)(x + 2) = 0", correct:false},
-      {option:"(x - 2)(x + 6) = 0", correct:false},
-      {option:"(x + 4)(x + 1) = 0", correct:false}
+      {option:"(x + 4)(x + 2) = 0", correct:true},
+      {option:"(x + 1)(x + 8) = 0", correct:false},
+      {option:"(x + 5)(x + 1) = 0", correct:false},
+      {option:"(x + 8)(x - 2) = 0", correct:false},
+      {option:"(x + 10)(x - 4) = 0", correct:false}
     ],
     step3options: [
-      {option:"x = 1, x = -4", correct:true},
-      {option:"x = -1, x = 4", correct:false},
-      {option:"x = -4, x = -1", correct:false},
-      {option:"x = 4, x = 1", correct:false},
-      {option:"x = 2, x = -2", correct:false}
+      {option:"x = -4, x = -2", correct:true},
+      {option:"x = 4, x = 2", correct:false},
+      {option:"x = -2, x = -1", correct:false},
+      {option:"x = -1, x = -8", correct:false},
+      {option:"x = 2, x = -4", correct:false}
     ]
   },
 
-  // Q3: p=-5,q=-2 => x^2-(5+2)x+( -5*-2)=x^2-7x+10=0
+  // Q3: Remove reversed correct factorization and replace with a distinct incorrect option
   {
     equation: "x^2 - 7x = -10",
     step1options: [
@@ -62,11 +65,11 @@ const questions = [
       {option:"x^2 - 10x + 7 = 0", correct:false}
     ],
     step2options: [
-      {option:"(x - 5)(x - 2) = 0", correct:true},
+      {option:"(x - 5)(x - 2) = 0", correct:true}, // Correct
       {option:"(x + 5)(x + 2) = 0", correct:false},
       {option:"(x - 10)(x + 1) = 0", correct:false},
       {option:"(x - 1)(x - 10) = 0", correct:false},
-      {option:"(x - 2)(x - 5) = 0", correct:false} // reversed correct order as distractor
+      {option:"(x - 6)(x - 1) = 0", correct:false} // Replaced the reversed correct with a new distinct incorrect pair
     ],
     step3options: [
       {option:"x = 5, x = 2", correct:true},
@@ -77,7 +80,7 @@ const questions = [
     ]
   },
 
-  // Q4: p=1,q=-3 => x^2+(1-3)x+1*(-3)= x^2 -2x -3=0
+  // Q4: (Unchanged)
   {
     equation:"x^2 - 2x = 3",
     step1options:[
@@ -103,7 +106,7 @@ const questions = [
     ]
   },
 
-  // Q5: p=5,q=-2 => x^2+(5-2)x+5*(-2)=x^2+3x-10=0
+  // Q5: Make sure step2 all distinct and only one correct, no equivalent pairs
   {
     equation:"x^2 + 3x = 10",
     step1options:[
@@ -114,11 +117,12 @@ const questions = [
       {option:"2x^2+3x-10=0", correct:false}
     ],
     step2options:[
-      {option:"(x + 5)(x - 2) = 0", correct:true},
-      {option:"(x -5)(x +2)=0", correct:false},
-      {option:"(x +2)(x -5)=0", correct:false},
-      {option:"(x +10)(x -1)=0", correct:false},
-      {option:"(x +1)(x -10)=0", correct:false}
+      {option:"(x + 5)(x - 2) = 0", correct:true}, // Correct
+      {option:"(x - 5)(x + 2) = 0", correct:false}, 
+      {option:"(x + 10)(x - 1) = 0", correct:false},
+      {option:"(x + 3)(x - 4) = 0", correct:false}, 
+      {option:"(x + 1)(x + 10) = 0", correct:false} 
+      // All distinct, no reversed pairs of the correct factorization
     ],
     step3options:[
       {option:"x = -5, x = 2", correct:true},
@@ -129,7 +133,7 @@ const questions = [
     ]
   },
 
-  // Q6: p=-4,q=-4 => x^2 + (-8)x +16=0
+  // Q6: (Unchanged)
   {
     equation:"x^2 - 8x = -16",
     step1options:[
@@ -155,7 +159,7 @@ const questions = [
     ]
   },
 
-  // Q7: p=9,q=1 => x^2+10x+9=0
+  // Q7: (Unchanged)
   {
     equation:"x^2 + 10x = -9",
     step1options:[
@@ -181,7 +185,8 @@ const questions = [
     ]
   },
 
-  // Q8: p=-2,q=-3 => x^2-5x+6=0
+  // Q8: Change step2 to remove reversed correct factorization and ensure uniqueness
+  // Correct: (x - 2)(x - 3)=0
   {
     equation:"x^2 - 5x = -6",
     step1options:[
@@ -193,10 +198,10 @@ const questions = [
     ],
     step2options:[
       {option:"(x - 2)(x - 3) = 0", correct:true},
-      {option:"(x +2)(x +3)=0", correct:false},
-      {option:"(x -1)(x -6)=0", correct:false},
-      {option:"(x -3)(x -2)=0", correct:false},
-      {option:"(x +1)(x -6)=0", correct:false}
+      {option:"(x + 2)(x + 3) = 0", correct:false},
+      {option:"(x - 1)(x - 6) = 0", correct:false},
+      {option:"(x + 7)(x + 1) = 0", correct:false},  // Replaced (x -3)(x -2) with a new distinct pair
+      {option:"(x + 1)(x - 10) = 0", correct:false} 
     ],
     step3options:[
       {option:"x = 2, x = 3", correct:true},
@@ -207,7 +212,7 @@ const questions = [
     ]
   },
 
-  // Q9: p=6,q=-1 => x^2+5x-6=0
+  // Q9: (Unchanged)
   {
     equation:"x^2 + 5x = 6",
     step1options:[
@@ -233,7 +238,7 @@ const questions = [
     ]
   },
 
-  // Q10: p=-7,q=2 => x^2 -5x-14=0
+  // Q10: (Unchanged)
   {
     equation:"x^2 - 5x = 14",
     step1options:[
