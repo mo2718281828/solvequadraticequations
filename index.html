@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quadratic Equations Practice Game</title>
+  <style>
+    /* Embedded CSS Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .menu {
+      margin-top: 50px;
+    }
+
+    .menu h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .toggle-group {
+      margin-bottom: 20px;
+    }
+
+    .toggle-group label {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+
+    .toggle-group select {
+      font-size: 18px;
+      padding: 5px 10px;
+    }
+
+    .menu-button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 22px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .menu-button:hover {
+      background-color: #1976D2;
+    }
+
+    .question-section {
+      margin-top: 50px;
+    }
+
+    .question-section h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .options-list button {
+      width: 80%;
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #FFFFE0; /* Light yellow */
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .options-list button:hover {
+      background-color: #FFFACD; /* Lighter yellow on hover */
+    }
+
+    .options-list button.correct {
+      background-color: #4CAF50 !important; /* Green */
+      color: white;
+    }
+
+    .options-list button.incorrect {
+      background-color: #f44336 !important; /* Red */
+      color: white;
+    }
+
+    .info-text {
+      margin-left: 10px;
+      font-size: 16px;
+      color: black;
+    }
+
+    .next-btn {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .next-btn:hover {
+      background-color: #1976D2;
+    }
+
+    .score-section {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+
+    .end-game-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .end-game-btn:hover {
+      background-color: #d32f2f;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .instructions {
+      margin-top: 50px;
+      font-size: 18px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .instructions h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .back-btn:hover {
+      background-color: #333;
+    }
+  </style>
+  <!-- MathJax for rendering LaTeX -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- Main Menu -->
+    <div id="mainMenu" class="menu">
+      <h1>Quadratic Equations Practice Game</h1>
+      <div class="toggle-group">
+        <label for="orderSelect">Problem Order:</label>
+        <select id="orderSelect">
+          <option value="random">Random</option>
+          <option value="consecutive">Consecutive</option>
+        </select>
+      </div>
+      <div class="toggle-group">
+        <label for="lengthSelect">Game Length:</label>
+        <select id="lengthSelect">
+          <option value="5">5 Rounds</option>
+          <option value="10">10 Rounds</option>
+          <option value="20">20 Rounds</option>
+          <option value="max">MAX</option>
+        </select>
+      </div>
+      <button id="howToBtn" class="menu-button">How to Play</button>
+      <button id="playNowBtn" class="menu-button">Play Now</button>
+    </div>
+
+    <!-- Instructions Screen -->
+    <div id="instructionsScreen" class="instructions hidden">
+      <h2>How to Play</h2>
+      <p>This game will help you practice solving quadratic equations through a three-step process.</p>
+      <p>Choose how many problems you want to attempt (5, 10, 20, or MAX for all available problems).</p>
+      <p>For each problem, you will go through three steps:</p>
+      <ol>
+        <li><strong>Rewrite the equation:</strong> You'll be given an equation with terms on both sides. Move all terms to one side to get \(Ax^2 + Bx + C = 0.\)</li>
+        <li><strong>Factorize the equation:</strong> Using the correct standard form from step 1, factor the quadratic into \((\ldots)(\ldots)=0.\)</li>
+        <li><strong>Solve for x:</strong> From the factored form, find the solutions for \(x.\)</li>
+      </ol>
+      <p>For each correct answer, you earn points. Incorrect answers reduce your score. Try to achieve the highest possible score!</p>
+      <button id="backBtn" class="back-btn">Back to Menu</button>
+    </div>
+
+    <!-- Game Content -->
+    <div id="gameContent" class="hidden">
+      <div class="question-section">
+        <h1 id="questionText">Solve the Quadratic Equation:</h1>
+        <div id="integralDisplay"></div>
+        <div id="questionPrompt"></div>
+        <div id="options" class="options-list"></div>
+        <button id="nextQuestionBtn" class="next-btn" style="display: none;">Next Step</button>
+      </div>
+      <div class="score-section">
+        <p id="scoreDisplay">Score: 0</p>
+        <p id="roundDisplay"></p>
+      </div>
+      <button id="endGameBtn" class="end-game-btn" style="display: none;">End Game</button>
+    </div>
+
+    <!-- End Screen -->
+    <div id="endScreen" class="hidden">
+      <h1>Game Over</h1>
+      <p id="finalScore"></p>
+      <button id="restartBtn" class="next-btn">Restart Game</button>
+    </div>
+  </div>
+
+  <!-- Inserting questions.js externally, assume questions array is available -->
+  <script src="questions.js"></script>
+
+  <script>
+    let currentQuestionIndex = 0;
+    let currentPart = 1; // Step 1: rewrite, Step 2: factor, Step 3: solve
+    let score = 0;
+    let roundsPlayed = 0;
+    let gameLength = '10'; 
+    let problemOrder = 'random'; 
+    let selectedQuestions = [];
+
+    const mainMenu = document.getElementById('mainMenu');
+    const howToBtn = document.getElementById('howToBtn');
+    const playNowBtn = document.getElementById('playNowBtn');
+    const instructionsScreen = document.getElementById('instructionsScreen');
+    const backBtn = document.getElementById('backBtn');
+    const gameContent = document.getElementById('gameContent');
+    const questionText = document.getElementById('questionText');
+    const integralDisplay = document.getElementById('integralDisplay');
+    const questionPrompt = document.getElementById('questionPrompt');
+    const optionsContainer = document.getElementById('options');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const roundDisplay = document.getElementById('roundDisplay');
+    const endGameBtn = document.getElementById('endGameBtn');
+    const endScreen = document.getElementById('endScreen');
+    const finalScore = document.getElementById('finalScore');
+    const restartBtn = document.getElementById('restartBtn');
+    const orderSelect = document.getElementById('orderSelect');
+    const lengthSelect = document.getElementById('lengthSelect');
+
+    howToBtn.addEventListener('click', showInstructions);
+    backBtn.addEventListener('click', showMainMenu);
+    playNowBtn.addEventListener('click', startGame);
+    nextQuestionBtn.addEventListener('click', proceedToNext);
+    endGameBtn.addEventListener('click', endGame);
+    restartBtn.addEventListener('click', restartGame);
+
+    function showInstructions() {
+      mainMenu.classList.add('hidden');
+      instructionsScreen.classList.remove('hidden');
+    }
+
+    function showMainMenu() {
+      instructionsScreen.classList.add('hidden');
+      mainMenu.classList.remove('hidden');
+    }
+
+    function startGame() {
+      problemOrder = orderSelect.value;
+      gameLength = lengthSelect.value;
+
+      if (problemOrder === 'random') {
+        selectedQuestions = [...questions].sort(() => Math.random() - 0.5);
+      } else {
+        selectedQuestions = [...questions];
+      }
+
+      if (gameLength !== 'max') {
+        selectedQuestions = selectedQuestions.slice(0, parseInt(gameLength));
+      }
+
+      currentQuestionIndex = 0;
+      currentPart = 1;
+      score = 0;
+      roundsPlayed = 0;
+      scoreDisplay.textContent = `Score: ${score}`;
+      roundDisplay.textContent = `Round: ${roundsPlayed + 1}/${gameLength === 'max' ? selectedQuestions.length : gameLength}`;
+
+      mainMenu.classList.add('hidden');
+      gameContent.classList.remove('hidden');
+
+      setupQuestion();
+    }
+
+    function setupQuestion() {
+      if (currentQuestionIndex >= selectedQuestions.length) {
+        endGame();
+        return;
+      }
+
+      currentPart = 1;
+      nextQuestionBtn.style.display = 'none';
+      endGameBtn.style.display = 'inline';
+      optionsContainer.innerHTML = '';
+
+      const currentQuestion = selectedQuestions[currentQuestionIndex];
+      // Step 1 instructions
+      questionText.textContent = 'Solve the Quadratic Equation:';
+      integralDisplay.innerHTML = `\\(\\displaystyle ${currentQuestion.equation}\\)`;
+      questionPrompt.textContent = 'Step 1: Rewrite the equation so that all terms are on one side (standard form).';
+      generateOptions(currentQuestion.step1options);
+
+      roundsPlayed++;
+      roundDisplay.textContent = `Round: ${roundsPlayed}/${gameLength === 'max' ? selectedQuestions.length : gameLength}`;
+
+      MathJax.typesetPromise();
+    }
+
+    function generateOptions(options) {
+      optionsContainer.innerHTML = '';
+      options.sort(() => Math.random() - 0.5);
+      options.forEach(optionObj => {
+        const button = document.createElement('button');
+        button.innerHTML = optionObj.option;
+        button.optionObj = optionObj; 
+        button.onclick = () => checkAnswer(optionObj, button);
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function checkAnswer(optionObj, button) {
+      const buttons = optionsContainer.querySelectorAll('button');
+      buttons.forEach(btn => { btn.disabled = true; });
+
+      if (optionObj.correct) {
+        button.classList.add('correct');
+        score += 10;
+        scoreDisplay.textContent = `Score: ${score}`;
+      } else {
+        button.classList.add('incorrect');
+        score = Math.max(0, score - 5);
+        scoreDisplay.textContent = `Score: ${score}`;
+        buttons.forEach(btn => {
+          if (btn.optionObj && btn.optionObj.correct) {
+            btn.classList.add('correct');
+            const infoSpan = document.createElement('span');
+            infoSpan.className = 'info-text';
+            infoSpan.textContent = ' Correct Answer';
+            btn.appendChild(infoSpan);
+          }
+        });
+      }
+
+      nextQuestionBtn.style.display = 'inline';
+      nextQuestionBtn.textContent = currentPart === 3 ? 'Next Problem' : 'Next Step';
+    }
+
+    function proceedToNext() {
+      nextQuestionBtn.style.display = 'none';
+      const currentQuestion = selectedQuestions[currentQuestionIndex];
+
+      if (currentPart === 1) {
+        currentPart = 2;
+        // Step 2: factor
+        const correctForm = currentQuestion.step1options.find(o=>o.correct).option;
+        questionPrompt.innerHTML = `Step 2: Factor the equation.<br>HINT: The correct standard form is ${correctForm}`;
+        generateOptions(currentQuestion.step2options);
+        MathJax.typesetPromise();
+      } else if (currentPart === 2) {
+        currentPart = 3;
+        // Step 3: solve
+        const correctFactor = currentQuestion.step2options.find(o=>o.correct).option;
+        questionPrompt.innerHTML = `Step 3: Solve the equation.<br>HINT: The correct factorization is ${correctFactor}`;
+        generateOptions(currentQuestion.step3options);
+        MathJax.typesetPromise();
+      } else {
+        // Move to next question
+        currentQuestionIndex++;
+        setupQuestion();
+      }
+    }
+
+    function endGame() {
+      gameContent.classList.add('hidden');
+      endScreen.classList.remove('hidden');
+      finalScore.textContent = `Your final score is: ${score}`;
+    }
+
+    function restartGame() {
+      currentQuestionIndex = 0;
+      currentPart = 1;
+      score = 0;
+      roundsPlayed = 0;
+      scoreDisplay.textContent = `Score: ${score}`;
+      endScreen.classList.add('hidden');
+      mainMenu.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
