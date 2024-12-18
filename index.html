@@ -218,7 +218,7 @@
     <div id="gameContent" class="hidden">
       <div class="question-section">
         <h1 id="questionText">Solve the Quadratic Equation:</h1>
-        <div id="integralDisplay"></div>
+        <div id="equationDisplay"></div>
         <div id="questionPrompt"></div>
         <div id="options" class="options-list"></div>
         <button id="nextQuestionBtn" class="next-btn" style="display: none;">Next Step</button>
@@ -257,7 +257,7 @@
     const backBtn = document.getElementById('backBtn');
     const gameContent = document.getElementById('gameContent');
     const questionText = document.getElementById('questionText');
-    const integralDisplay = document.getElementById('integralDisplay');
+    const equationDisplay = document.getElementById('equationDisplay');
     const questionPrompt = document.getElementById('questionPrompt');
     const optionsContainer = document.getElementById('options');
     const nextQuestionBtn = document.getElementById('nextQuestionBtn');
@@ -328,7 +328,7 @@
       const currentQuestion = selectedQuestions[currentQuestionIndex];
       // Step 1 instructions
       questionText.textContent = 'Solve the Quadratic Equation:';
-      integralDisplay.innerHTML = `\\(\\displaystyle ${currentQuestion.equation}\\)`;
+      equationDisplay.innerHTML = `\\(\\displaystyle ${currentQuestion.equation}\\)`;
       questionPrompt.textContent = 'Step 1: Rewrite the equation so that all terms are on one side (standard form).';
       generateOptions(currentQuestion.step1options);
 
